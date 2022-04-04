@@ -24,59 +24,54 @@ let quitBtn = document.getElementById("quitBtn");
 let time = document.getElementById("time");
 let feedback = document.getElementById("feedback");
 
-btn.addEventListener("btn", startGame)
-quitBtn.addEventListener("quitBtn", endGame)
+btn.addEventListener('click', clickBtn )
+quitBtn.addEventListener('click', clickQuitBtn )
+time.addEventListener('start', timeStart )
+input.addEventListener('input', guessValue )
 
-function startGame(){
-    favNumber = 4;
-    playing = true;
-    const time = setInterval(clock, 1000);
-    
-    function guess(){
-        if(playing){
-            if(input<favNumber){
-                feedback.textContent(`${input} is too low!`)
-            } else if(input>favNumber && input<=10){
-                feedback.textContent(` ${input} is too high!`)
-            }else if(input == favNumber){
-                feedback.textContent(`Congrats!!!! ${input} is correct!`);
-            }
+function clickBtn(){
+
+}
+
+function clickQuitBtn(){
+
+}
+
+function timeStart(){
+
+}
+
+function guessValue(e){
+    log.textContent = e.target.value;
+}
+
+function startGame(input){
+    playing = true
+    favNumber = 4
+    time = setInterval(clock, 1000)
+    if(playing){
+        if(input<favNumber){
+            feedback.textContent(`${input} is too low!`)
+        } else if(input>favNumber && input<=10){
+            feedback.textContent(` ${input} is too high!`)
+        }else if(input == favNumber){
+            feedback.textContent(`Congrats!!!! ${input} is correct!`);
         }
-        if(input > 10){
-            feedback.textContent("Try again! that's over 10, silly.");
-        }
     }
 }
 
-function endGame(){
-
+function endGame(status){
+   if(status === 'win'){
+       document.quitBtn.textContent("You win!");
+   }else if(status != 'win'){
+       document.btn.textContent("That's not it! Try again?")
+   }else{
+       document.quitBtn.textContent("Do you want to quit?")
+   }
 }
 
 
 
 
-//GAME PLAY
-while(favNumber != numGuess){
-    numGuess = (prompt("Guess my favorite number!\n\nChoose a number between 1 and 10.\n\n type 'quit' to stop."))
-    
-    //IF THEY WANT TO QUIT
-    if(numGuess.toLowerCase() == "quit"){
-        alert("Goodbye! Thanks for playing.")
-        break;
-    }
 
-   
-
-    numGuess = parseInt(numGuess);
-    if (isNaN(numGuess)){
-        alert("Please try again with a valid number")
-    }else{
-        evaluateAnswer();
-    }
-}
-
-function evaluateAnswer(){
-    
-}
-//DO YOU WANT TO REPLAY THE GAME?? (conditions to which the loop should stop)
 
