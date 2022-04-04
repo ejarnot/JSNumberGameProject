@@ -10,6 +10,23 @@
 //7 game end DONE
 //8 do you want to play again?
 
+// What starts the game?
+// Click the start button
+// What happens when you start the game?
+// The clock starts
+// The fav number is generated/set
+// Game status is set to 'playing'
+// What is a 'guess'?
+// User inputs a number
+// Clicks a button
+// What happens when they guess?
+// get the guess
+// evaluate the guess
+// give feedback
+// How does game end?
+// How do you restart the game?
+// Can you quit?
+
 
 ///GAME SETUP
 let playing = false;
@@ -22,52 +39,56 @@ let input = document.getElementById("guess");
 let btn = document.getElementById("btn");
 let quitBtn = document.getElementById("quitBtn");
 let time = document.getElementById("time");
+let clock;
 let feedback = document.getElementById("feedback");
 
-btn.addEventListener('click', clickBtn )
-quitBtn.addEventListener('click', clickQuitBtn )
-time.addEventListener('start', timeStart )
-input.addEventListener('input', guessValue )
+btn.addEventListener('click', startGame)
+quitBtn.addEventListener('click', endGame)
 
-function clickBtn(){
 
-}
-
-function clickQuitBtn(){
-
-}
-
-function timeStart(){
-
-}
-
-function guessValue(e){
-    log.textContent = e.target.value;
-}
-
-function startGame(input){
+function startGame() {
     playing = true
     favNumber = 4
-    time = setInterval(clock, 1000)
-    if(playing){
-        if(input<favNumber){
-            feedback.textContent(`${input} is too low!`)
-        } else if(input>favNumber && input<=10){
-            feedback.textContent(` ${input} is too high!`)
-        }else if(input == favNumber){
-            feedback.textContent(`Congrats!!!! ${input} is correct!`);
+    clock = setInterval(() => {
+        time.textContent = seconds++
+     
+    }, 1000)
+ 
+
+    btn.removeEventListener("click", startGame)
+    btn.addEventListener("click", takeGuess)
+
+    btn.textContent = "Guess";
+}
+
+function takeGuess() {
+    let guess = input.value
+
+    console.log(guess);
+
+    if (playing) {
+        if (guess < favNumber) {
+            feedback.textContent = `${guess} is too low!`
+        } else if (guess > favNumber) {
+            feedback.textContent = ` ${guess} is too high!`
+        } else if (guess == favNumber) {
+            feedback.textContent = `Congrats!!!! ${guess} is correct!`
         }
     }
 }
 
-function endGame(status){
-   if(status === 'win'){
-       document.quitBtn.textContent("You win!");
-   }else if(status != 'win'){
-       document.btn.textContent("That's not it! Try again?")
-   }else{
-       document.quitBtn.textContent("Do you want to quit?")
-   }
+//need something to show number of attempts!
+
+function endGame() {
+    quitBtn.onclick = function quit(){
+        //time stops and resets
+        clock = setInterval(() => {
+            time.textContent = seconds
+        }, 1000)
+        //feedback to default/nothing
+        if 
+        //reset attempts
+    }
 }
 
 

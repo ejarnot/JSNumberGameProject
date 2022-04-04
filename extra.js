@@ -22,6 +22,14 @@ function evaluateAnswer(){
     
 }
 
+if (status === 'win') {
+    quitBtn.textContent ="You win!";
+} else if (status != 'win') {
+    document.btn.textContent = "That's not it! Try again?"
+} else {
+    document.quitBtn.textContent = "Do you want to quit?"
+}
+
 
 
 
