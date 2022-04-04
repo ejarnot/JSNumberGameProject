@@ -63,8 +63,8 @@ function startGame() {
 
 function takeGuess() {
     let guess = input.value
-
-    console.log(guess);
+    attempts++
+    console.log(attempts);
 
     if (playing) {
         if (guess < favNumber) {
@@ -75,6 +75,7 @@ function takeGuess() {
             feedback.textContent = `Congrats!!!! ${guess} is correct!`
         }
     }
+    
 }
 
 //need something to show number of attempts!
@@ -86,7 +87,7 @@ function endGame() {
             time.textContent = seconds
         }, 1000)
         //feedback to default/nothing
-        if 
+        
         //reset attempts
     }
 }
