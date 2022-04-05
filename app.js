@@ -79,16 +79,18 @@ function takeGuess() {
 }
 
 //need something to show number of attempts!
+//don't understand how to "activate" the quitBtn
 
 function endGame() {
     quitBtn.onclick = function quit(){
         //time stops and resets
-        clock = setInterval(() => {
-            time.textContent = seconds
-        }, 1000)
         //feedback to default/nothing
-        
         //reset attempts
+        if(quitBtn.onclick){
+            attempts = 0
+            playing = false
+            feedback.textContent = "-"
+        }
     }
 }
 
