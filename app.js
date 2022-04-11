@@ -41,6 +41,7 @@ let quitBtn = document.getElementById("quitBtn");
 let time = document.getElementById("time");
 let clock;
 let feedback = document.getElementById("feedback");
+let attemptsEle = document.getElementById("attempts");
 
 btn.addEventListener('click', startGame)
 quitBtn.addEventListener('click', endGame)
@@ -49,10 +50,7 @@ quitBtn.addEventListener('click', endGame)
 function startGame() {
     playing = true
     favNumber = 4
-    clock = setInterval(() => {
-        time.textContent = seconds++
-     
-    }, 1000)
+    clock = setInterval(timer, 1000)
  
 
     btn.removeEventListener("click", startGame)
@@ -63,8 +61,8 @@ function startGame() {
 
 function takeGuess() {
     let guess = input.value
-    attempts++
-    console.log(attempts);
+    attempts ++
+    attemptsEle.textContent = `You have guessed ${attempts} time(s)!`
 
     if (playing) {
         if (guess < favNumber) {
@@ -82,20 +80,41 @@ function takeGuess() {
 //don't understand how to "activate" the quitBtn
 
 function endGame() {
-    quitBtn.onclick = function quit(){
+    
         //time stops and resets
         //feedback to default/nothing
         //reset attempts
-        if(quitBtn.onclick){
             attempts = 0
+            clearInterval(clock)
+            clock = 0;
             playing = false
             feedback.textContent = "-"
+
+            btn.addEventListener("click", startGame)
+            btn.removeEventListener("click", takeGuess)
+
+            btn.textContent = "Start";
+
+            attemptsEle.textContent = "-"
+
         }
-    }
+
+
+
+
+function timer() {
+        seconds++
+
+        if (seconds > 59) {
+            minutes++
+            seconds = 0
+        }
+
+        if (minutes > 59) {
+            minutes = 0
+            hours++
+        }
+
+    time.textContent = `${hours.toString().padStart(2, "0")}:${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`
 }
-
-
-
-
-
 
