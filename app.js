@@ -1,31 +1,4 @@
-//What parts do you need to a game????
-//1 game welcome and instructions DONE
-//// setup game
-//2 introduce player (ask player for their name and address them with that name)
-//3 game start DONE
-//4 game play (ask user to input a number) DONE
-//5 feedback DONE
-// // make some feedback about anything over 10 DONE
-//6 repeat 3-5 until correct DONE
-//7 game end DONE
-//8 do you want to play again?
 
-// What starts the game?
-// Click the start button
-// What happens when you start the game?
-// The clock starts
-// The fav number is generated/set
-// Game status is set to 'playing'
-// What is a 'guess'?
-// User inputs a number
-// Clicks a button
-// What happens when they guess?
-// get the guess
-// evaluate the guess
-// give feedback
-// How does game end?
-// How do you restart the game?
-// Can you quit?
 
 
 ///GAME SETUP
